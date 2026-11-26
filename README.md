@@ -7,6 +7,26 @@
 
 # FWK_TMPE
 
+Firmware for the TEWS TECHNOLOGIES TMPE627 board (Xilinx Artix-7 XC7A50T-2CSG325I), built on the DESY FPGA Firmware Framework (`fwk`).
+
+By default, the DSP kernels have the following assignment, but can be modified in the HLS code:
+
+- ADC0 -> XDMA C2H
+- XDMA H2C -> DAC0
+- ADC1 -> FIR Filter -> DAC1
+- ADC2 -> FIR Filter -> DAC2
+- ADC3 -> FIR Filter -> DAC3
+
+[1] D. Andrino-Izquierdo, A. Carpeño, M. Ruiz “Design and implementation of a signal acquisition and processing architecture over mPCIe on a Xilinx Artix 7,” Jun. 2025. [Online]. Available: https://oa.upm.es/89337/
+
+## Build
+
+Compile the DSP first, then the BSP. The DSP builds the HLS IP to the IP repo inside `prj` and the BSP builds the hardware interfacing logic around it.
+
+```sh
+make cfg=vitis  build
+make cfg=vivado build
+```
 ## License
 
 Apache-2.0 for the I2A2-UPM sources, see [LICENSE](LICENSE) and [NOTICE](NOTICE).
