@@ -1,0 +1,61 @@
+// SystemRDL address map of the TMPE627 BSP AXI4-Lite configuration registers
+// Author: David Andrino-Izquierdo <david.andrino@upm.es>
+// Copyright: I2A2-UPM 2026
+// SPDX-License-Identifier: Apache-2.0
+
+`include "bsp_tmpe627.vh"
+
+`ifndef C_ID
+`define C_ID 0x1FF00002
+`endif
+`ifndef C_VERSION
+`define C_VERSION 0x00000000
+`endif
+
+addrmap bsp_tmpe627 {
+    name = "BSP TMPE627";
+    desc = "TMPE627 BSP Address Space";
+    desyrdl_interface = "AXI4L";
+    desyrdl_generate_hdl = true;
+
+    reg {
+        name = "Sampling End-of-Count";
+        default sw = rw;
+        default hw = r;
+        field {} eoc[31:0];
+    } SAMP_EOC @0x00;
+    
+    reg {
+        name = "ADC Configuration Register";
+        default sw = rw;
+        default hw = r;
+        field {} SoftspanCH0[3:0];
+        field {} SoftspanCH1[7:4];
+        field {} SoftspanCH2[11:8];
+        field {} SoftspanCH3[15:12];
+        field {} Padding[30:16];
+        field {} PD[31:31];
+    } ADC_CONFIG @ 0x4;
+
+    reg {
+        name = "DAC Configuration Register";
+        default sw = rw;
+        default hw = r;
+        field {} PD3[31:31];
+        field {} PD2[30:30];
+        field {} PD1[29:29];
+        field {} PD0[28:28];
+        field {} Code[27:27];
+        field {} CLR_Sel[26:26];
+        field {} TSD_Ena[25:25];
+        field {} Padding[24:3];
+        field {} DACRange[2:0];
+    } DAC_CONFIG @ 0x8;
+
+    reg {
+        name = "DAC Configuration Register";
+        default sw = rw;
+        default hw = r;
+        field {} E[0:0];
+    } C2H_ENA @ 0xC;
+};

@@ -1,0 +1,12 @@
+prj/
+out/
+logs/
+compile_commands.json
+
+.Xil
+*.log
+
+.venv/
+__pycache__/
+
+src/yocto/*

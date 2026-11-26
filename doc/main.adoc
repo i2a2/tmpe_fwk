@@ -1,0 +1,39 @@
+// Project documentation: module structure and build flow
+// Author: David Andrino-Izquierdo <david.andrino@upm.es>
+// Copyright: I2A2-UPM 2026
+// SPDX-License-Identifier: Apache-2.0
+
+= Documentation
+:author: David Andrino
+// :toc:
+:reproducible:
+
+NOTE: Parts of the BSP (the ADC and DAC logic and the TMPE627 constraint files) are TEWS Technologies reference designs and are NOT covered by the Apache-2.0 license of this project. +
+Copyright (c) TEWS Technologies GmbH. +
+All rights reserved. +
+This Reference Design is protected by copyright laws and is provided exclusively for use with TEWS Technologies products. +
+Reproduction, modification, distribution, or implementation of this Reference Design, in whole or in part, on non-TEWS products is strictly prohibited without prior written permission from TEWS Technologies GmbH.
+
+== Project structure
+
+- link:../src/bsp-tmpe627/doc/main.adoc[BSP Vivado project]: Board Support Package for TMPE-627. Includes ADC, DAC and XDMA communication and register configuration logic.
+- link:../src/dsp/doc/main.adoc[DSP Vitis project]: HLS implementation of the data processing algorithm
+
+The DSP must be compiled first to generate the IP containing the data processing logic. Then, the BSP can be compiled to generate all the communication and configuration logic around it. 
+
+Therefore, to completely implement the project use the following command (the ``FWK_VIVADO_JOBS`` variable is used to use multiple cores when synthesizing).
+
+[source,console]
+....
+make cfg=vitis build
+FWK_VIVADO_JOBS=x make cfg=vivado build
+....
+
+The resulting bitfile can be found in ``out/TMPE-FWK_vivado/`` and can be loaded with Vivado. To open the Vivado project, use:
+
+[source,console]
+....
+make cfg=vivado gui
+....
+
+In the same folder, the memory map files can be found, which will be required for ChimeraTK DeviceAccess.

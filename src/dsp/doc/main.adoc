@@ -1,0 +1,27 @@
+// HLS algorithm implementation documentation
+// Author: David Andrino-Izquierdo <david.andrino@upm.es>
+// Copyright: I2A2-UPM 2026
+// SPDX-License-Identifier: Apache-2.0
+
+= HLS Algorithm implementation
+:reproducible:
+
+In order to implement an algorithm in HLS, the Vitis HLS tool should be used. The top level task for the implementation must have the following structure:
+
+[source,cpp]
+....
+void top(
+        hls::stream<data_t>& in_adc1,    hls::stream<data_t>& in_adc2,
+        hls::stream<data_t>& in_adc3,    hls::stream<data_t>& in_adc4,
+        hls::stream<data_t>& out_dac1,   hls::stream<data_t>& out_dac2,
+        hls::stream<data_t>& out_dac3,   hls::stream<data_t>& out_dac4,
+        hls::stream<pci_data_t>& in_h2c, hls::stream<pci_data_t>& out_c2h
+    ) {
+    #pragma HLS INTERFACE mode=axis port=in_adc1,in_adc2,in_adc3,in_adc4,
+    #pragma HLS INTERFACE mode=axis port=out_dac1,out_dac2,out_dac3,out_dac4
+    #pragma HLS INTERFACE mode=axis port=in_h2c,out_c2h
+    #pragma HLS INTERFACE mode=ap_ctrl_none port=return
+
+    /* ALGORITHM IMPLEMENTATION */
+}
+....

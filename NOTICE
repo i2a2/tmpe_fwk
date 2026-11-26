@@ -1,0 +1,94 @@
+TMPE-FWK
+Copyright 2026 I2A2-UPM
+
+This product includes software developed by third parties, which is NOT covered
+by the Apache License 2.0 of this project. Their own notices must be retained in
+any redistribution (Apache License 2.0, Section 4).
+
+
+DESY FPGA Firmware Framework (FWK)
+  Copyright 2019-2026 DESY
+  Apache-2.0
+  Used as a git submodule at fwk/ (https://gitlab.desy.de/fpgafw/fwk).
+  Note: fwk/tpl/tpl_module.tcl is marked CERN-OHL-W-2.0 instead of Apache-2.0,
+  and fwk/tpl/doc/antora_ui/js/vendor/highlight.min.js is vendored Highlight.js
+  v11.3.1, BSD-3-Clause (c) 2006-2021 Ivan Sagalaev and other contributors.
+
+
+TEWS TECHNOLOGIES GmbH, Am Bahnhof 7, D-25469 Halstenbek, TMPE627 Reference Design
+  Copyright (c) TEWS Technologies GmbH. All rights reserved.
+  This Reference Design is protected by copyright laws and is provided exclusively
+  for use with TEWS Technologies products.
+  Reproduction, modification, distribution, or implementation of this Reference
+  Design, in whole or in part, on non-TEWS products is strictly prohibited without
+  prior written permission from TEWS Technologies GmbH.
+
+  These files are NOT licensed under the Apache-2.0 license of this repository.
+  TEWS Technologies GmbH confirmed that this repository may be made publicly 
+  available for academic and scientific purposes using the TMPE627,
+  subject to the restriction quoted above. The statement is reproduced verbatim at
+  the top of each of the following files:
+    src/bsp-tmpe627/src/DAC/ad5754r.vhd
+    src/bsp-tmpe627/src/DAC/pulse_stretcher.vhd
+    src/bsp-tmpe627/cstr/tmpe627_pins.xdc
+    src/bsp-tmpe627/cstr/tmpe627_timing.xdc
+    src/bsp-tmpe627/cstr/tmpe627_implementation_timing.xdc
+    src/bsp-tmpe627/cstr/tmpe62x_config.xdc
+
+  TEWS-derived files, modified by I2A2-UPM but published under the TEWS notice
+  rather than Apache-2.0:
+    src/bsp-tmpe627/src/ADC/adc.vhd                           based on TEWS example
+    src/bsp-tmpe627/src/ADC/adc_channel.vhd                   based on TEWS example
+    src/bsp-tmpe627/src/DAC/dac.vhd                           based on TEWS example
+
+  In every file listed above the TEWS terms are tagged with the SPDX identifier
+  LicenseRef-TEWS-Reference-Design, a document-local reference to the wording
+  quoted above; it is not an entry of the SPDX License List.
+
+  Scope of that permission: use and redistribution of the files listed above is
+  limited to academic and scientific purposes using the TMPE627. Commercial use,
+  or use of these files with hardware other than a TEWS TMPE627, requires prior
+  written permission from TEWS Technologies GmbH. The remaining sources of this
+  repository are Apache-2.0 and are not subject to this limitation.
+
+  Build outputs are not published by this repository: prj/ and out/ are
+  git-ignored and are recreated locally. Running the Vivado build writes copies
+  of the TEWS constraint and DAC sources into the generated project and produces
+  bit, bitstream and XSA artifacts that implement that reference design. Those
+  artifacts fall under the TEWS restriction quoted above and are not released
+  here; distributing them requires prior written permission from TEWS
+  Technologies GmbH and must carry this NOTICE and the LICENSE file unchanged.
+
+
+AMD/Xilinx Vivado-generated output product
+  src/bsp-tmpe627/src/tmpe_daq_wrapper.vhd   block-design HDL wrapper, Vivado 2021.1
+
+  This file is an Output Product produced by AMD/Xilinx Vivado 2021.1 (Create
+  HDL Wrapper). It is tagged with the SPDX identifier
+  LicenseRef-AMD-Xilinx-Output-Products, a document-local reference (not an entry
+  of the SPDX License List) to the AMD End User Licence Agreement and the Xilinx
+  Export Control Statement under which Vivado grants the right to use and
+  distribute its Output Products. It is not I2A2-UPM work and is not covered by
+  the Apache-2.0 grant of this repository.
+
+  Build-time AMD/Xilinx dependencies, not redistributed by this repository: the
+  IP cores instantiated by name in src/bsp-tmpe627/tcl (xilinx.com:ip:xdma 4.2,
+  axis_data_fifo 2.0, c_counter_binary 12.0, xlconcat 2.1, xlconstant 1.1,
+  fifo_generator 13.2) and the Xilinx libraries the sources instantiate: xpm
+  (xpm_cdc_handshake, in src/bsp-tmpe627/src/axiRegisters.vhd) and UNISIM
+  primitives (in clock_buffer.vhd and tmpe_daq_wrapper.vhd only). Those libraries
+  and cores are supplied by Vivado to anyone who runs the build, under their own
+  licences. No .xci, .bd, .xpe, .lic, bitstream or XSA output product is
+  tracked; prj/ and out/, which hold them, are git-ignored.
+
+
+Documentation images
+  src/bsp-tmpe627/doc/images/configRegs.png
+  src/bsp-tmpe627/doc/images/fullBlockDesign.png
+
+  Screenshots of this project's own block design and of its configuration
+  registers, created by I2A2-UPM. Binary files carry no per-file header, so this
+  NOTICE is their license statement: they are copyright I2A2-UPM 2026 and are
+  covered by the Apache-2.0 license of this repository like the other I2A2-UPM
+  sources. They are not part of the TEWS Reference Design and are not subject to
+  the TEWS restriction quoted above.
