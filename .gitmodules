@@ -1,4 +1,4 @@
 [submodule "fwk"]
 	path = fwk
 	url = https://gitlab.desy.de/fpgafw/fwk
-	branch = 28-vitis-hls-fix
+	branch = main
